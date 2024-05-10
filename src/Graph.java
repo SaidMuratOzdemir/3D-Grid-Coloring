@@ -18,13 +18,8 @@ public class Graph {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        int rowCounter = 0;
         for (Node node : nodes) {
-            if (rowCounter != node.getRowID()) {
-                sb.append("\n");
-                rowCounter = node.getRowID();
-            }
-            sb.append(node).append(" ");
+            sb.append(node.toString()).append("\n");
         }
         return sb.toString();
     }
