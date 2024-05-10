@@ -1,15 +1,58 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        char[][][] array =
+                {
+                        {
+                                {1,2,3,4,5},
+                                {6,7,8,9,10},
+                                {11,12,13,14,15},
+                                {16,17,18,19,20},
+                                {21,22,23,24,25}
+                        },
+                        {
+                                {26,27,28,29,30},
+                                {31,32,33,34,35},
+                                {36,37,38,39,40},
+                                {41,42,43,44,45},
+                                {46,47,48,49,50}
+                        },
+                        {
+                                {51,52,53,54,55},
+                                {56,57,58,59,60},
+                                {61,62,63,64,65},
+                                {66,67,68,69,70},
+                                {71,72,73,74,75}
+                        },
+                        {
+                                {76,77,78,79,80},
+                                {81,82,83,84,85},
+                                {86,87,88,89,90},
+                                {91,92,93,94,95},
+                                {96,97,98,99,100}
+                        },
+                        {
+                                {101,102,103,104,105},
+                                {106,107,108,109,110},
+                                {111,112,113,114,115},
+                                {116,117,118,119,120},
+                                {121,122,123,124,125}
+                        }
+                };
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Graph graph = Converter.convert(array);
+        ColorScaler scaler = new ColorScaler();
+        GraphColorizer colorizer = new GraphColorizer();
+
+        colorizer.colorGraph(graph);
+        scaler.scaleColor(graph);
+
+        try (PrintWriter out = new PrintWriter("graph_data.txt")) {
+            out.println(graph);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
