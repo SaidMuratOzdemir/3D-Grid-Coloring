@@ -1,4 +1,4 @@
-public class GraphColoring {
+public class GraphColorizer {
 
     private static int lastColor = 0;
 
